@@ -1,0 +1,639 @@
+
+html{
+    font-size: 15px;
+}
+
+*{ 
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* background-color: #1e1e1e; */
+    color:white;
+    font-family: NanumSquareEB;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+
+/* 다 만들고 삭제예정 */
+/* div, main, section, header, footer, article, nav, aside, form 
+{ border: 1px solid yellow; }  
+*/
+body {
+    width: 100%;
+    height: 100vh;
+    min-width: 1920px;
+    min-height: 969px;
+}
+
+
+
+main{
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    min-height: 969px;
+}
+
+
+section{
+    width:100%;
+    height:90%;
+    display: flex;
+    flex-direction: row;
+    min-height: 969px;
+}
+
+
+
+/* 좌측 시작 */
+.sectionBox1{
+    height: 100vh; 
+    width:12vw;
+    min-width: 200px;
+}
+
+
+
+
+.innerBox03{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 70.27px;
+    height: 7.5%;
+    border-bottom: 1px solid #000;
+    width: 100%;
+}
+
+
+.logoContainer{
+    position: relative;
+    height: 50%;
+    width: 18%;
+}
+
+.logoIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.markerIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.dashboardTitleBox{
+    margin-left: 2%;
+}
+
+.dashboard{
+    font-size: 0.9rem;
+    margin-bottom: 0.5%;
+}
+
+.dashboardTitle{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+.innerBox04{
+    min-height: 203.94px;
+    height: 22%;
+}
+
+.leftImgContainer{
+    position: relative;
+    height: 48%;
+    width: 13%;
+    margin-left: 10%;
+    padding-top: 10%;
+}
+
+.markerIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+
+.cctvIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.leftTitle{
+    font-size: 1rem;
+    margin-left: 10%;
+}
+
+
+.containerBox01{
+    background: #1F1F1F;
+    min-height: 969px;
+    height: 100%; 
+    width: 100%;
+}
+
+.leftTitleBox{
+    width: 100%;
+    min-height: 51.53px;
+    height: 25%;
+    display: flex; 
+    flex-direction: row; 
+    justify-content: start;
+    align-items: end;
+    margin-bottom: 5%;
+}
+
+
+.dataContainer01{
+    height: 60%;
+    width: 100%;
+}
+
+.leftDataBox{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: start;
+    align-items: center;
+    min-height: 37.09px;
+    height: 30%;
+}
+
+
+
+.dataTotal{
+    border-bottom: 1px solid #333;
+    background: #000;
+}
+
+
+.dataSection{
+    border-bottom: 1px solid #333;
+    background: #1A1A1A;
+
+}
+
+.dataStatsBox{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+}
+
+
+
+.dataStatsImgBox{
+    position: relative;
+    width: 11%;
+    height: 35%;
+    margin-left: 10%;
+}
+
+
+.chLiveIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.dataStatsImg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.dataStats{
+    margin-left: 20%;
+    font-size: 0.7rem;
+}
+
+
+.dataCount{
+    font-size: 0.7rem;
+    margin-left: 5%;
+}
+
+
+/* 좌측 끝 */
+
+
+
+
+/* 우측 시작 */
+
+.sectionBox2{
+    /* min-width: 1720px; */
+    height: 100vh; 
+    width: 98vw;
+}
+
+
+.containerBox02{
+    background: #333;
+    padding: 0.8% 0 0.3% 1.5%;
+    width:99%;
+    height:100vh;
+}
+
+
+
+.innerBox01{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 1650px;
+    width: 98.5%;
+    height: 5%;
+    min-height: 46.16px;
+    /* border: 1px solid yellow; */
+    margin: 0 0 0.3% 0;
+}
+
+.innerheader{
+    align-items: center;
+}
+
+.innerFooter{
+    align-items: start;
+}
+
+.innerBox02{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    min-width: 1650px;
+    width: 99%;
+    min-height: 410px;
+    height: 40%;
+    /* height: 30%; */
+    /* border: 1px solid red; */
+    margin: 0 0 1% 0;
+}
+
+
+.innerBox1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 410px;
+}
+
+.chartBox{
+    /* border: 1px solid blue; */
+    width: 33%;
+    height: 100%;
+    border-radius: 16px;
+}
+
+
+
+
+
+
+.titleBox{
+    border: 1px solid #1A1A1A;
+    background: #282828;
+    min-height: 48px;
+    min-width: 530px;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    height:10%;
+    border-radius: 16px 16px 0 0;
+}
+
+
+
+.dataBox{
+    border: 1px solid #1A1A1A;
+    background: #1E1E1E;
+    min-width: 530px;
+    min-height: 350px;
+    width: 100%;
+    height: 90%;
+    border-radius: 0 0 16px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.dateDataBox{
+    border: 1px solid #1A1A1A;
+    background: #1E1E1E;
+    width: 100%;
+    min-height: 350px;
+    height: 100%;
+    border-radius: 0 0 16px 16px;
+}
+
+
+.text{
+    color: #D9B678;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.titleText01{
+    font-size: 1rem;
+    margin: 0 0 0 3%;
+    display: flex;
+    align-items: center;
+}
+
+.titleText02{
+    font-size: 1rem;
+    margin: 0 0 0 1%;
+    display: flex;
+    align-items: center;
+}
+
+.titleText03{
+    font-size: 0.7rem;
+    margin: 0 0 0 1%;
+    display: flex;
+    align-items: center;
+    color: #D9B678;
+}
+
+.headerBtnBox{
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.headerBtnBox *{
+    margin: 0 1% 0 0;
+}
+
+
+button{
+    border-radius: 4px;
+    border: 1px solid #000;
+    font-size: 0.7rem;
+}
+
+.abled:hover{
+    cursor: pointer;
+    color:#FFA800;
+}
+
+
+
+.calendarBtn::-webkit-datetime-edit-text {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.calendarBtn{
+    min-width: 32px;
+    width: 4.1%;
+    height: 60%;
+    background-color: #000000;
+    border-radius: 4px;
+}
+
+.calendarBtn:hover{
+    cursor: pointer;
+}
+.calendarBtn::-webkit-datetime-edit-month-field{
+    -webkit-appearance: none;
+    display: none;
+}
+.calendarBtn::-webkit-datetime-edit-day-field {
+    -webkit-appearance: none;
+    display: none;
+}
+.calendarBtn::-webkit-datetime-edit-year-field {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.calendarBtn::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0); 
+    opacity: 1;
+    display: block;
+    background: url('/resources/img/icon_calendar.png') no-repeat 50% 50%; 
+    width: 100%;
+    height: 100%;
+    border-width: thin;
+}
+
+.calendarBtn::-webkit-calendar-picker-indicator:hover{
+    cursor: pointer;
+}
+
+
+
+
+.inputDateBtn{
+    background-color: #1A1A1A;
+    border-radius: 4px;
+    width: 20%;
+    height: 60%;
+    padding-left: 10px;
+    font-size: 0.8rem;
+}
+
+/* 달력 아이콘 없애기*/
+.inputDateBtn::-webkit-inner-spin-button,
+.inputDateBtn::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+
+.textBtn{
+    background-color: #181818;
+    width: 9%;
+    height: 60%;
+}
+
+
+.arrowBtn{
+    position: relative;
+    background-color: #000000;
+    width: 4.5%;
+    height: 60%;
+    /* top: -15%; */
+}
+
+.arrowIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+}
+
+.btnContainer{
+    width: 9%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+}
+
+.settingBtn{
+    position: relative;
+    /* background-color: #181818; */
+    width: 100%;
+    height: 100%;
+    
+}
+
+
+.statsBtnBox{
+    width: 50%;
+    height: 100%;
+    margin-right: 5px;
+}
+
+.statsBtn{
+    position: relative;
+    background-color: #181818;
+    width: 100%;
+    height: 100%;
+    /* top: -15%; */
+    text-align: right; /* 텍스트를 오른쪽으로 정렬 */
+    padding: 0 10px 0 0;
+    color: #7A7A7A !important;
+}
+
+.statsIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-150%, -50%);
+    width: 30%;
+    height: 70%;
+    margin: 0 0 0 10px;
+}
+
+/****************** 데이터 현황 테이블 시작 *******************/
+
+.tablebox{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+}
+
+.tableContainer{
+    width: 100%;
+    /* overflow-y: auto; 수직 스크롤을 표시합니다. */
+
+}
+
+.tableContainer>div{
+    max-height: 369px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.gateTable{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    min-width: 540px;
+}
+
+
+.gateTable *{
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+
+.gateth{
+    height: 15%;
+    min-height: 31px;
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+}
+
+.gateName{
+    width: 60%;
+}
+
+.gateYN{
+    width: 20%;
+}
+
+.signal{
+    width: 20%;
+}
+
+.gatetd{
+    min-height: 31px;
+    height: 15%;
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+}
+
+
+.gate{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.gateIconBox{
+    position: relative;
+    min-width: 48px;
+    min-height: 18px;
+    width: 40%;
+    height: 100%;
+}
+
+
+.gateIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+
+/****************** 데이터 현황 테이블 끝 *******************/
