@@ -12,10 +12,10 @@ let cameraCount;
 let cameraIpList_arry;
 
 
-function liveInformation(liveDataList01){
+function liveInformation(liveDataListSum){
 // function liveInformation(cameraCountResp, cameraIpListResp){
 
-    let gateLive = liveDataList01.result[0];
+    let gateLive = liveDataListSum;
     // console.log("gateLive", gateLive);
     
     

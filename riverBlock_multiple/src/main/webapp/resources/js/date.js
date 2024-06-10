@@ -11,21 +11,17 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     // inputDate 엘리먼트 초기화
     var inputDate = document.getElementById('inputDate');
-    // 1개일 때
-    savedIP = localStorage.getItem('dbIP');
-    console.log("savedIP", savedIP);
 
     // iplist
-    savedIPList = localStorage.getItem('ipList');
-    console.log("savedIPList", savedIPList);
+    savedIPList = JSON.parse(localStorage.getItem('ipList'));
+    // console.log("savedIPList", savedIPList);
 
     // forDate 변수 초기화
     forDate = new Date(inputDate.value);
 
     // inputDate 엘리먼트 값 변경 이벤트 핸들러 등록
     inputDate.addEventListener('change', function() {
-        sendToServer(savedIP, this.value);
-        // sendToServer(savedIPList, this.value);
+        sendToServer(savedIPList, this.value);
     });
 
     // 초기화 함수 호출
@@ -33,7 +29,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
 
     // 날짜 보내기 
-    // sendToServer(savedIP, forDate);
     sendToServer(savedIPList, forDate);
 
 });
@@ -43,48 +38,42 @@ document.addEventListener("DOMContentLoaded", ()=> {
     
     document.getElementById('calenderButton').addEventListener('change', function() {
         inputDate.value = this.value;
-        sendToServer(savedIP, this.value);
-        // sendToServer(savedIPList, this.value);
+        sendToServer(savedIPList, this.value);
     });
 
 
     document.getElementById('leftBtn').addEventListener("click", ()=>{
         // console.log("leftBtn클릭");
         beforeOneDay();
-        sendToServer(savedIP, forDate);
-        // sendToServer(savedIPList, this.value);
+        sendToServer(savedIPList, this.value);
     });
 
 
     document.getElementById('rightBtn').addEventListener("click", ()=>{
         // console.log("rightBtn클릭");
         afterOneDay();
-        sendToServer(savedIP, forDate);
-        // sendToServer(savedIPList, this.value);
+        sendToServer(savedIPList, this.value);
     });
 
 
     document.getElementById('yesterdayBtn').addEventListener("click", ()=>{
         // console.log("yesterdayBtn클릭");
         yesterday();
-        sendToServer(savedIP, forDate);
-        // sendToServer(savedIPList, this.value);
+        sendToServer(savedIPList, this.value);
     });
 
 
     document.getElementById('todayBtn').addEventListener("click", ()=>{
         // console.log("todayBtn클릭");
         today();
-        sendToServer(savedIP, forDate);
-        // sendToServer(savedIPList, this.value);
+        sendToServer(savedIPList, this.value);
     });
 
 
     document.getElementById('beforeWeekBtn').addEventListener("click", ()=>{
         // console.log("beforeWeekBtn클릭");
         before1weekBtn();
-        sendToServer(savedIP, forDate);
-        // sendToServer(savedIPList, this.value);
+        sendToServer(savedIPList, this.value);
     });
 
 
@@ -153,8 +142,7 @@ function before1weekBtn(){
 // input태그 날짜 직접 입력
 inputDate.addEventListener('keyup', function() {
     // console.log("inputDate 변경됨 : ", this.value);
-    sendToServer(savedIP, this.value);
-    // sendToServer(savedIPList, this.value);
+    sendToServer(savedIPList, this.value);
 });
 
 
@@ -167,39 +155,6 @@ async function sendToServer(savedIPList, value) {
     // 형식을 YYYYMMDD로 변경
     let occuDate = formatToYYYYMMDD(value || forDate);
     // console.log('Sending occuDate to server:', occuDate); // 콘솔에 occuDate 값 로그 출력
-    // console.log('sendToServer savedIP:', savedIP); // 콘솔에 savedIP 값 로그 출력
-
-    
-
-    //이전 DB연결 시 작성한 ajax문*******************************************************
-    
-        // fetch("/sendDate", { 
-        //     method : "POST", 
-        //     headers: {"Content-Type": "application/json;"}, 
-        //     body : JSON.stringify( {"occuDate":occuDate} ) 
-        // })
-        // .then(resp => resp.json()) // 요청에 대한 응답 객체(response)를 필요한 형태로 파싱
-        // .then((result) => {
-        //         // console.log("result", result );
-            
-        //         data = result;
-            
-        //         // 차트호출
-        //         lineChart(data);
-        //         makeTable(data);
-        //         liveInfomation(data);
-        //         openDounutChart(data);
-        //         closeDounutChart(data);
-            
-            
-        //     }) // 첫 번째 then에서 파싱한 데이터를 이용한 동작 작성
-        //     .catch( err => {
-        //             // console.log("err : ", err);
-        //         }); // 예외 발생 시 처리할 내용을 작성
-                
-    //이전 DB연결 시 작성한 ajax문*******************************************************
-
-
 
 
     // // fetchData2 함수를 호출하고 결과를 처리하는 예제
@@ -219,18 +174,16 @@ async function sendToServer(savedIPList, value) {
 
 async function fetchData(savedIPList, occuDate) {
     // console.log("여기!");
-    console.log("savedIPList", savedIPList);
-    console.log("savedIPList[0]", savedIPList[0]);
-    console.log("savedIPList[1]", savedIPList[1]);
-    console.log("savedIPList[2]", savedIPList[2]);
-    console.log("savedIPList[3]", savedIPList[3]);
+    // console.log("savedIPList", savedIPList);
+    // console.log("savedIPList[0]", savedIPList[0]);
+    // console.log("savedIPList[1]", savedIPList[1]);
+
     
     const takeIPList = savedIPList;
-    console.log("takeIPList", takeIPList);
-    console.log("takeIPList[0]", takeIPList[0]);
-    console.log("takeIPList[1]", takeIPList[1]);
-    console.log("takeIPList[2]", takeIPList[2]);
-    console.log("takeIPList[3]", takeIPList[3]);
+    // console.log("takeIPList", takeIPList);
+    // console.log("takeIPList[0]", takeIPList[0]);
+    // console.log("takeIPList[1]", takeIPList[1]);
+
     
     
     // var DBip = "172.16.0.93";
@@ -250,7 +203,7 @@ async function fetchData(savedIPList, occuDate) {
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
                 "occuDate": occuDate,
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 1, '"+ occuDate +"', '"+ occuDate +"', ''",
                 "port" : 12000,
                 // "query": "SELECT * FROM TB_TEMP_RESULT",
@@ -275,7 +228,7 @@ async function fetchData(savedIPList, occuDate) {
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
                 "occuDate": occuDate,
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 // "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 1, '"+ occuDate +"', '"+ occuDate +"', ''",
                 "query": "SELECT * FROM TB_TEMP_RESULT",
                 "port" : 12000,
@@ -293,8 +246,69 @@ async function fetchData(savedIPList, occuDate) {
         // console.log("result1_1", result1_1);
 
 
-        openDounutChart(openDataList01); 
+        // openDounutChart(openDataList01); 
+
+
+         // Query 01 호출
+        const result01 = await fetch("/openDataList", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "occuDate": occuDate,
+                "serverip": takeIPList[1],
+                "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 1, '"+ occuDate +"', '"+ occuDate +"', ''",
+                "port" : 12000,
+                // "query": "SELECT * FROM TB_TEMP_RESULT",
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result01.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const openDataList1 = await result01.json();
+        // console.log("openDataList1", openDataList1);
+        // console.log("result01", result01);
+
+
+
+        // Query 01 받기
+        const result01_1 = await fetch("/openDataList01", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "occuDate": occuDate,
+                "serverip": takeIPList[1],
+                // "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 1, '"+ occuDate +"', '"+ occuDate +"', ''",
+                "query": "SELECT * FROM TB_TEMP_RESULT",
+                "port" : 12000,
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result01_1.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const openDataList01_1 = await result01_1.json();
+        // console.log("openDataList01_1", openDataList01_1);
+        // console.log("result01_1", result01_1);
         
+        // console.log("openDataList01.result[0]", openDataList01.result[0]);
+        // console.log("openDataList01_1.result[0]", openDataList01_1.result[0]);
+
+
+        // 두 배열을 합침
+        const openDataListSum = combineData(openDataList01.result[0], openDataList01_1.result[0]);
+        // console.log("openDataListSum", openDataListSum); 
+        openDounutChart(openDataListSum); 
+        
+
+
+
 
         // Query 2 호출
         const result2 = await fetch("/closeDataList", {
@@ -302,7 +316,7 @@ async function fetchData(savedIPList, occuDate) {
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
                 "occuDate": occuDate,
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 2, '"+ occuDate +"', '"+ occuDate +"', ''",
                 "port" : 12000,
                 // "query": "SELECT * FROM TB_TEMP_RESULT",
@@ -326,7 +340,7 @@ async function fetchData(savedIPList, occuDate) {
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
                 "occuDate": occuDate,
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 "query": "SELECT * FROM TB_TEMP_RESULT",
                 "port" : 12000,
                 "id":"",
@@ -343,7 +357,58 @@ async function fetchData(savedIPList, occuDate) {
         // console.log("result2_1", result2_1);
 
 
-        closeDounutChart(closeDataList01); 
+
+        // Query 02 호출
+        const result02 = await fetch("/closeDataList", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "occuDate": occuDate,
+                "serverip": takeIPList[1],
+                "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 2, '"+ occuDate +"', '"+ occuDate +"', ''",
+                "port" : 12000,
+                // "query": "SELECT * FROM TB_TEMP_RESULT",
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result02.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const closeDataList02 = await result02.json();
+        // console.log("closeDataList", closeDataList);
+        // console.log("result2", result2);
+
+
+        // Query 02 받기
+        const result02_1 = await fetch("/closeDataList01", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "occuDate": occuDate,
+                "serverip": takeIPList[1],
+                "query": "SELECT * FROM TB_TEMP_RESULT",
+                "port" : 12000,
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result02_1.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const closeDataList02_1 = await result02_1.json();
+        // console.log("closeDataList01", closeDataList01);
+        // console.log("result2_1", result2_1);
+        
+
+        // 두 배열을 합침
+        const closeDataListSum = combineData(closeDataList01.result[0], closeDataList02_1.result[0]);
+        // console.log("closeDataListSum", closeDataListSum); // ['10', '0', '0', '0', '0', '0']
+        closeDounutChart(closeDataListSum); 
 
 
 
@@ -352,7 +417,7 @@ async function fetchData(savedIPList, occuDate) {
             method: "POST",
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 3, '', '', ''",
                 "port" : 12000,
                 "id":"",
@@ -375,7 +440,7 @@ async function fetchData(savedIPList, occuDate) {
             method: "POST",
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 "query": "SELECT * FROM TB_TEMP_RESULT",
                 "port" : 12000,
                 "id":"",
@@ -391,7 +456,59 @@ async function fetchData(savedIPList, occuDate) {
         // console.log("tableDataList01", tableDataList01);
         // console.log("result3_1", result3_1);
 
-        makeTable(tableDataList01); 
+
+
+
+
+        // Query 03 호출
+        const result03 = await fetch("/tableDataList", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "serverip": takeIPList[1],
+                "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 3, '', '', ''",
+                "port" : 12000,
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result03.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const tableDataList03 = await result03.json();
+        // console.log("tableDataList03", tableDataList03);
+        // console.log("result3", result3);
+
+
+
+        // Query 03 받기
+        const result03_1 = await fetch("/tableDataList01", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "serverip": takeIPList[1],
+                "query": "SELECT * FROM TB_TEMP_RESULT",
+                "port" : 12000,
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result03_1.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const tableDataList03_1 = await result03_1.json();
+        // console.log("tableDataList03_1", tableDataList03_1);
+        // console.log("result03_1", result03_1);
+
+        // 두 배열을 병합
+        const tableDataLisSum = mergeData(tableDataList01.result, tableDataList03_1.result);
+        // console.log("tableDataLisSum", tableDataLisSum); 
+
+        makeTable(tableDataLisSum); 
 
 
 
@@ -403,7 +520,7 @@ async function fetchData(savedIPList, occuDate) {
             method: "POST",
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 5, '', '', ''",
                 "port" : 12000,
                 // "query": "SELECT * FROM TB_TEMP_RESULT",
@@ -428,7 +545,7 @@ async function fetchData(savedIPList, occuDate) {
             method: "POST",
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 "query": "SELECT * FROM TB_TEMP_RESULT",
                 "port" : 12000,
                 "id":"",
@@ -444,7 +561,63 @@ async function fetchData(savedIPList, occuDate) {
         // console.log("liveDataList01", liveDataList01);
         // console.log("result5_1", result5_1);
 
-        liveInformation(liveDataList01); 
+
+
+
+        // Query 05 호출
+        const result05 = await fetch("/liveDataList", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "serverip": takeIPList[1],
+                "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 5, '', '', ''",
+                "port" : 12000,
+                // "query": "SELECT * FROM TB_TEMP_RESULT",
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result05.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const liveDataList05 = await result05.json();
+        // console.log("liveDataList05", liveDataList05);
+        // console.log("result05", result05);
+
+
+
+
+        // Query 05 받기
+        const result05_1 = await fetch("/liveDataList01", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "serverip": takeIPList[1],
+                "query": "SELECT * FROM TB_TEMP_RESULT",
+                "port" : 12000,
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result05_1.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const liveDataList05_1 = await result05_1.json();
+        // console.log("liveDataList05_1", liveDataList05_1);
+        // console.log("result05_1", result05_1);
+        
+        // console.log("liveDataList05_1.result[0]", liveDataList05_1.result[0]);
+
+        
+
+        // 두 배열을 합침
+        const liveDataListSum = combineData(liveDataList01.result[0], liveDataList05_1.result[0]);
+        // console.log("liveDataListSum", liveDataListSum); 
+        liveInformation(liveDataListSum); 
 
 
 
@@ -455,7 +628,7 @@ async function fetchData(savedIPList, occuDate) {
             method: "POST",
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
-                "serverip": savedIP,
+                "serverip": takeIPList[1],
                 "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 0, '', '', ''",
                 "port" : 12000,
                 "id":"",
@@ -481,7 +654,7 @@ async function fetchData(savedIPList, occuDate) {
             method: "POST",
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
-                "serverip": savedIP,
+                "serverip": takeIPList[1],
                 "query": "SELECT * FROM TB_TEMP_RESULT",
                 "port" : 12000,
                 "id":"",
@@ -517,6 +690,73 @@ async function fetchData(savedIPList, occuDate) {
 
 
 
+        // Query 00 호출
+        const result00 = await fetch("/cameraNameList", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "serverip": takeIPList[1],
+                "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 0, '', '', ''",
+                "port" : 12000,
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result00.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const cameraNameList00 = await result00.json();
+        // console.log("cameraNameList00", cameraNameList00);
+        // console.log("result00", result00);
+        
+
+
+        
+        
+        
+        // Query 00 받기
+        const result00_1 = await fetch("/cameraNameList01", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "serverip": takeIPList[1],
+                "query": "SELECT * FROM TB_TEMP_RESULT",
+                "port" : 12000,
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result00_1.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const cameraNameList00_1 = await result00_1.json();
+        // console.log("cameraNameList00_1", cameraNameList00_1);
+        // console.log("result00_1", result00_1);
+
+
+
+
+        var cameraList00 = [];
+
+        // console.log("cameraNameList01.result.length", cameraNameList01.result.length);
+
+        for(let i = 0; i < cameraNameList00_1.result.length; i++){
+            // console.log("cameraNameList01.result[i]", cameraNameList01.result[i]);
+            cameraList00.push(cameraNameList00_1.result[i][1]);
+            // console.log("cameraList1", cameraList);
+        }
+        // console.log("cameraList2", cameraList);
+        
+        // 중복을 제거한 후에 중복 제거된 값들의 배열을 만듭니다.
+        const cameras00 = [...new Set(cameraList00)];
+        // console.log("cameras00", cameras00);
+
+
+
 
 
         // Query 4 호출
@@ -525,7 +765,7 @@ async function fetchData(savedIPList, occuDate) {
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
                 "occuDate": occuDate,
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 4, '"+ occuDate +"', '"+ occuDate +"', '"+cameras+"'",
                 "port" : 12000,
                 "id":"",
@@ -550,7 +790,7 @@ async function fetchData(savedIPList, occuDate) {
             method: "POST",
             headers: { "Content-Type": "application/json;" },
             body: JSON.stringify({
-                "serverip": savedIP,
+                "serverip": takeIPList[0],
                 "query": "SELECT * FROM TB_TEMP_RESULT",
                 "port" : 12000,
                 "id":"",
@@ -568,126 +808,102 @@ async function fetchData(savedIPList, occuDate) {
 
 
 
-        lineChart(cameras, lineDataList01); 
+
+
+
+        // Query 04 호출
+        const result04 = await fetch("/lineDataList", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "occuDate": occuDate,
+                "serverip": takeIPList[1],
+                "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 4, '"+ occuDate +"', '"+ occuDate +"', '"+cameras00+"'",
+                "port" : 12000,
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result04.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const lineDataList04 = await result04.json();
+        // console.log("lineDataList04", lineDataList04);
+        // console.log("result04", result04);
 
 
 
 
 
+        // Query 04 받기
+        const result04_1 = await fetch("/lineDataList01", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;" },
+            body: JSON.stringify({
+                "serverip": takeIPList[1],
+                "query": "SELECT * FROM TB_TEMP_RESULT",
+                "port" : 12000,
+                "id":"",
+                "pw":""
+            })
+        });
+
+        if (!result04_1.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const lineDataList04_1 = await result04_1.json();
+        // console.log("lineDataList04_1", lineDataList04_1);
+        // console.log("result4_1", result4_1);
 
 
-    // (async () => {
-    //     try {
-    //         await fetchData2(savedIP, occuDate, cameras);
-    //         // fetchData 함수에서 반환한 데이터를 이용하여 원하는 작업 수행
+        const camerasSum = addData(cameras, cameras00);
+        // console.log("camerasSum", camerasSum); 
+        // 두 배열을 병합
+        const lineDataListSum = mergeData(lineDataList01.result, lineDataList04_1.result);
+        // console.log("lineDataListSum", lineDataListSum); 
 
-    //         // 각각의 응답 데이터를 이용하여 원하는 작업 수행
-    //     } catch (error) {
-    //         console.error('Error occurred:', error);
-    //     }
-    // })();
-
-
-
-
+        lineChart(camerasSum, lineDataListSum); 
 
     } catch (error) {
         // console.error('Error fetching data:', error);
         throw error;
     }
+
+
+}
+
+
+function combineData(list1, list2) {
+    // console.log("list1", list1);
+    // console.log("list2", list2);
+    // console.log("1번 확인");
+    if (list1.length !== list2.length) {
+        throw new Error('두 배열의 길이가 다릅니다.');
+    }
+
+    return list1.map((value, index) => {
+        // console.log("value", value);
+        const num1 = parseFloat(value) || 0;  // value를 숫자로 변환, 변환이 안되면 0으로 설정
+        const num2 = parseFloat(list2[index]) || 0;  // list2[index]를 숫자로 변환, 변환이 안되면 0으로 설정
+        return String(num1 + num2);  // 더한 결과를 문자열로 변환하여 반환
+    });
+}
+
+
+function mergeData(list1, list2) {
+    return list1.concat(list2);
 }
 
 
 
-// var cameras;
-
-
-
-// async function fetchData2(savedIP, occuDate, cameras) {
-
-    
-//     try {
-//         const result0 = await fetch("/cameraNameList", {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json;" },
-//             body: JSON.stringify({
-//                 "serverip": savedIP,
-//                 "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 0, '', '', ''",
-//                 "id":"",
-//                 "pw":""
-//             })
-//         }).then(resp => resp.json());
-
-
-//         const result0_1 = await fetch("/cameraNameList01", {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json;" },
-//             body: JSON.stringify({
-//                 "serverip": savedIP,
-//                 "query": "SELECT * FROM TB_TEMP_RESULT",
-//                 "id":"",
-//                 "pw":""
-//             })
-//         }).then(resp => resp.json());
-
-
-
-//         const result4 = await fetch("/lineDataList", {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json;" },
-//             body: JSON.stringify({
-//                 "occuDate": occuDate,
-//                 "serverip": savedIP,
-//                 "query": "EXEC SP_GET_GATE_CONTROL_DSASHBOARD_DATA 4, '"+ occuDate +"', '"+ occuDate +"', '"+cameras+"'",
-//                 "id":"",
-//                 "pw":""
-//             })
-//         }).then(resp => resp.json());
-
-//         //쿼리 수정해야 함.
-//         const result4_1 = await fetch("/lineDataList01", {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json;" },
-//             body: JSON.stringify({
-//                 "serverip": savedIP,
-//                 "query": "SELECT * FROM TB_TEMP_RESULT",
-//                 "id":"",
-//                 "pw":""
-//             })
-//         }).then(resp => resp.json());
-
-//         console.log("cameraCountResp", cameraCountResp);
-//         // console.log("cameraIpListResp", cameraIpListResp);
-//         // console.log("gateLiveListResp", gateLiveListResp);
-
-//         // fetchData 함수를 호출하고 결과를 처리하는 예제
-//         (async () => {
-//             try {
-//                 await fetchData(savedIP, occuDate);
-//                 // fetchData 함수에서 반환한 데이터를 이용하여 원하는 작업 수행
-
-//                 // 각각의 응답 데이터를 이용하여 원하는 작업 수행
-//             } catch (error) {
-//                 console.error('Error occurred:', error);
-//             }
-//         })();
-
-//         liveInformation(cameraCountResp, cameraIpListResp, gateLiveListResp);
-
-//     } catch (error) {
-//         console.error('Error fetching data:', error);
-//         throw error;
-//     }
-
-// }
-
-
-
-
-
-
-
-
+function addData(list1, list2) {
+    // console.log("list1", list1);
+    // console.log("list2", list2);
+    return newArray = list1.concat(list2);
+}
 
 
 /* 날짜 형식화 함수 */

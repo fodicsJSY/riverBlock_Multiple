@@ -4,11 +4,12 @@ let dateDataChart;
 
 
 
-function lineChart(cameras, lineDataList01) {
-    // console.log("linechart cameras : ", cameras);
-    // console.log("linechart lineDataList01 : ", lineDataList01);
+function lineChart(camerasSum, lineDataListSum) {
+    // console.log("linechart lineDataListSum : ", lineDataListSum);
+    // console.log("linechart camerasSum : ", camerasSum);
+    // console.log("linechart lineDataListSum : ", lineDataListSum);
     
-    lineDataList = lineDataList01.result;
+    lineDataList = lineDataListSum;
     
     let chartCameraList= {};
 
@@ -51,16 +52,25 @@ function lineChart(cameras, lineDataList01) {
     // 데이터 처리
     lineDataList.forEach(item => {
         const cameraName = item[0]; // 카메라명
+            // console.log("cameraName", cameraName);
         const hour = parseInt(item[1]); // 시간
+            // console.log("hour", hour);
         const count = parseInt(item[2]); // 구동횟수
-        
+            // console.log("count", count);
+            
         // 해당 카메라명이 없으면 새로운 객체로 초기화
         if (!cameraData[cameraName]) {
             cameraData[cameraName] = Array(24).fill(0); // 24시간을 0으로 초기화
-        }
-        
+            }
+            
         // 시간대별 구동횟수 누적
         cameraData[cameraName][hour] += count;
+        // console.log("cameraData", cameraData);
+        console.log("hour", hour);
+        console.log("cameraName", cameraName);
+        console.log("cameraData[cameraName]", cameraData[cameraName]);
+        console.log("cameraData[hour]", cameraData[hour]);
+        console.log("cameraData[cameraName][hour]", cameraData[cameraName][hour]);
     });
     
     // 최종 시리즈 데이터 생성
@@ -70,7 +80,7 @@ function lineChart(cameras, lineDataList01) {
         data: cameraData[cameraName]
     }));
     
-    // console.log(seriesData);
+    console.log(seriesData);
     
     
     
@@ -90,7 +100,7 @@ function lineChart(cameras, lineDataList01) {
             textStyle: {
                 color: '#FFFFF' 
             },
-            data: chartCameraList[cameras]
+            data: chartCameraList[camerasSum]
         },
         grid: {
             left: '3%',

@@ -995,5 +995,30 @@ public class MainController {
 	}
 	
 	
+	
+	
+	
+	 
+	 // 파일명 데이터
+	 @PostMapping("/fnameUrl")
+	 @ResponseBody
+	 public Map<String, Object> fname(
+			 @RequestBody Map<String, Object> paramMap
+			 ){
+		 	
+		 	System.out.println("paramMap : " + paramMap);
+		 	
+		 	return paramMap;
+	 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

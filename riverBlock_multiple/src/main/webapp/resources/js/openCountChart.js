@@ -2,21 +2,21 @@ let openGateList;
 var openCountChart;
 
 function openDounutChart(data){
-    // console.log("data : ", data.result);
-    openGateList = data.result;
+    // console.log("data : ", data);
+    openGateList = data;
 
         // 이전에 있던 차트 객체가 있으면 삭제
         if (openCountChart || openGateList == null) {
             openCountChart.dispose();
         }
     
-    let openTimeCnt0 = openGateList[0][0];
-    // // console.log("openTimeCnt0", openTimeCnt0 );
-    let openTimeCnt1 = openGateList[0][1];
-    let openTimeCnt2 = openGateList[0][2];
-    let openTimeCnt3 = openGateList[0][3];
-    let openTimeCnt4 = openGateList[0][4];
-    let openTimeCnt5 = openGateList[0][5];
+    let openTimeCnt0 = openGateList[0];
+    // console.log("openTimeCnt0", openTimeCnt0 );
+    let openTimeCnt1 = openGateList[1];
+    let openTimeCnt2 = openGateList[2];
+    let openTimeCnt3 = openGateList[3];
+    let openTimeCnt4 = openGateList[4];
+    let openTimeCnt5 = openGateList[5];
     // console.log("openTimeCnt0", openTimeCnt0 );
     // console.log("시간별 개문 차트");
 

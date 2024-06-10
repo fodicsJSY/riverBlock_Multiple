@@ -34,16 +34,7 @@ async function getDBIP() {
         showCancelButton: true,
     });
 
-
-    if(localStorage.getItem('ipList')){
-        addipList(formValues);
-    }
-
-    if(!localStorage.getItem('ipList')){
         makeipList(formValues);
-    }
-
-
 
     // console.log("ipAddr: ", ipAddr);
     return formValues;
@@ -53,24 +44,24 @@ async function getDBIP() {
 let ipList = [];
 
 
-function addipList(formValues){
-    console.log("formValues", formValues);
-    let saveList = localStorage.getItem('ipList')
-    console.log("saveList", saveList);
+// function addipList(formValues){
+//     console.log("formValues", formValues);
+//     let saveList = localStorage.getItem('ipList')
+//     console.log("saveList", saveList);
     
-    if (!saveList.includes(formValues)) {
-        // console.log("ipAddr", ipAddr);
-        // console.log("saveList", saveList);
-        // ipList.push(saveList);
-        ipList.push(formValues);
-        // console.log("ipList", ipList);
-    }
+//     if (!saveList.includes(formValues)) {
+//         // console.log("ipAddr", ipAddr);
+//         // console.log("saveList", saveList);
+//         // ipList.push(saveList);
+//         ipList.push(formValues);
+//         // console.log("ipList", ipList);
+//     }
 
-    localStorage.setItem('ipList', ipList);
+//     localStorage.setItem('ipList', ipList);
 
-    // console.log("ipList", ipList);
-    initialize(ipList);
-}
+//     // console.log("ipList", ipList);
+//     // initialize(ipList);
+// }
 
 
 function makeipList(formValues){
@@ -114,7 +105,7 @@ let savedIPList;
 //     // }
 //     console.log("initialize savedIP", savedIP);
 
-    
+
 //     // forDate 변수 초기화
 //     forDate = new Date(inputDate.value);
 //     today();

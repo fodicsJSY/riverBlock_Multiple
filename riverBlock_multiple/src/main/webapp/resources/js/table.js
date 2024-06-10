@@ -1,8 +1,8 @@
 let tableDataList; 
 
-function makeTable(sendTableQuery){
-   // console.log("sendTableQuery", sendTableQuery );
-    tableDataList = sendTableQuery.result;
+function makeTable(tableDataLisSum){
+    // console.log("tableDataLisSum", tableDataLisSum );
+    tableDataList = tableDataLisSum;
 
     // console.log("tableDataList", tableDataList );
     // console.log("테이블 생성");

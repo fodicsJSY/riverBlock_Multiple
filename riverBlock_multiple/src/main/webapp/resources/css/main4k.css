@@ -396,6 +396,12 @@
 
 
 
+    
+    
+    
+
+
+
     .calendarBtn::-webkit-datetime-edit-text {
         -webkit-appearance: none;
         display: none;
@@ -513,7 +519,14 @@
         /* top: -15%; */
         text-align: right; /* 텍스트를 오른쪽으로 정렬 */
         padding: 0 10px 0 0;
-        color: #7A7A7A !important;
+        /* color: #7A7A7A !important; */
+    }
+
+
+    
+    .statsBtn:hover{
+        cursor: pointer;
+        color:#FFA800;
     }
 
     .statsIcon{
