@@ -203,6 +203,6 @@
     <script src="/resources/js/table.js"></script>
     <script src="/resources/js/liveInfo.js"></script>
     <script src="/resources/js/save.js"></script>
-    <%-- <script src="/resources/js/refresh.js"></script> --%>
+    <script src="/resources/js/refresh.js"></script>
 </body>
 </html>
